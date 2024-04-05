@@ -2,17 +2,19 @@ import { useState } from 'react'
 import bookLogo from './assets/books.png'
 import Books from './components/Books'
 import SingleBook from './components/SingleBook'
+import Register from './components/Register'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes, Route } from 'react-router-dom'
 
 const API_URL_BASE = "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api";
 
 function App() {
-  const [token, setToken] = useState(null)
 
   return (
     <>
       <h1><img id='logo-image' src={bookLogo}/>Library App</h1>
       <Routes>
+        <Route path='/register' element={<Register API_URL_BASE={API_URL_BASE}/>}>Register</Route>
         <Route path='/' element={<Books API_URL_BASE={API_URL_BASE}/>}>All Books</Route>
         <Route path='/:id' element={<SingleBook API_URL_BASE={API_URL_BASE}/>}></Route>
       </Routes>

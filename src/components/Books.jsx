@@ -25,6 +25,10 @@ console.log(allBooks)
 
   return (
     <>
+    <section className='nlRegister'>
+      <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
+    </section>
+    
     <section className='booksSection'>
       {allBooks.map((book) => {
         return (

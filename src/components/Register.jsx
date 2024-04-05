@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navigations from "./Navigations";
 
 const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, setPassword}) => {
   const [firstName, setFirstName] = useState("");
@@ -40,6 +41,7 @@ const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, set
   
   return (
     <>
+      <Navigations/>
       <h1>Sign up for the Library App</h1>
       <Form onSubmit={(e) => {
             submitHandler(e);

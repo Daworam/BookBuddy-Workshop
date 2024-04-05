@@ -12,12 +12,14 @@ const Navigations = ({token}) =>{
     <section className='nlButton'>
       {token ? 
       <>
+      <Button variant='info' onClick={()=>{navigate('/')}}>Home</Button>
       <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
       <Button variant='info' onClick={()=>{navigate('/login')}}>Log In</Button>
       <Button variant='info' onClick={()=>{navigate('/account')}}>My Account</Button>
-      <LogOut token={token}/>
+      <LogOut/>
       </> :
       <>
+      <Button variant='info' onClick={()=>{navigate('/')}}>Home</Button>
       <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
       <Button variant='info' onClick={()=>{navigate('/login')}}>Log In</Button>
       </>

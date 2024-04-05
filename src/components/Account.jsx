@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import ReservedBooks from "./ReservedBooks";
 
 const Account = ({API_URL_BASE, token}) => {
   
@@ -37,6 +38,7 @@ const Account = ({API_URL_BASE, token}) => {
   
   return (
     <>
+    <Button variant="dark" onClick={()=>{navigate('/')}}>Back to Books</Button>
     <h1>My Account</h1>
     <section>
       <h2>Name:</h2>
@@ -46,7 +48,8 @@ const Account = ({API_URL_BASE, token}) => {
       <h2>User Id:</h2>
       <p>{userId}</p>
     </section>
-    <Button variant="dark" onClick={()=>{navigate('/')}}>Back to Books</Button>
+    <ReservedBooks API_URL_BASE={API_URL_BASE} token={token}/>
+    
     </>
     
 

@@ -2,16 +2,17 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register = ({API_URL_BASE}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("This works")
     try {
       const response = await fetch(`${API_URL_BASE}/users/register`, {
         method: "POST",
@@ -27,6 +28,13 @@ const Register = ({API_URL_BASE}) => {
       }); 
       const result = await response.json();
       console.log(result)
+      localStorage.setItem("token", result.token)
+      console.log(localStorage.getItem("token"))
+
+      if(result.name){
+        alert("User already exists, please try another Email Address!")
+      }
+      navigate('/')
     } catch (error) {
       alert(error);
     }

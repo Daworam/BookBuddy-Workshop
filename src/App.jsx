@@ -3,6 +3,7 @@ import bookLogo from './assets/books.png'
 import Books from './components/Books'
 import SingleBook from './components/SingleBook'
 import Register from './components/Register'
+import Login from './components/Login'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Routes, Route } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/register' element={<Register API_URL_BASE={API_URL_BASE}/>}>Register</Route>
         <Route path='/' element={<Books API_URL_BASE={API_URL_BASE}/>}>All Books</Route>
         <Route path='/:id' element={<SingleBook API_URL_BASE={API_URL_BASE}/>}></Route>
+        <Route path='login' element={<Login API_URL_BASE={API_URL_BASE}/>}></Route>
       </Routes>
     </>
   )

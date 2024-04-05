@@ -25,8 +25,9 @@ console.log(allBooks)
 
   return (
     <>
-    <section className='nlRegister'>
+    <section className='nlButton'>
       <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
+      <Button variant='info' onClick={()=>{navigate('/login')}}>Log In</Button>
     </section>
     
     <section className='booksSection'>

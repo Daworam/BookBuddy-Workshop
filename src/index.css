@@ -10,4 +10,18 @@ body {
   margin-right: 10px;
 }
 
+.previewImg {
+  max-height: 200px;
+}
+
+.booksSection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.singleBookImg {
+  max-height: 500px;
+}
+
 /* Add your own custom styles here */

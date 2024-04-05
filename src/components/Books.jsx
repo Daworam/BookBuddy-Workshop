@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import Navigations from "./Navigations";
 
-const Books = ({API_URL_BASE, token}) => {
-
+const Books = ({ API_URL_BASE, token }) => {
   const navigate = useNavigate();
   const [allBooks, setAllBooks] = useState([]);
 
@@ -26,25 +25,32 @@ const Books = ({API_URL_BASE, token}) => {
 
   return (
     <>
-    <Navigations token ={token}/>
+      <Navigations token={token} />
 
-    <section className='booksSection'>
-    {allBooks.map((book) => {
-      return (
-        <div key={book.id} className="bookCard">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={`${book.coverimage}`} />
-            <Card.Body>
-              <Card.Title className="bookTitle">{book.title}</Card.Title>
-              <div className="buttonDiv">
-              <Button variant="primary" onClick={()=>{navigate(`/${book.id}`)}}>Details</Button>
-              </div>
-            </Card.Body>
-          </Card>
-        </div>
-      );
-    })}
-    </section>
+      <section className="booksSection">
+        {allBooks.map((book) => {
+          return (
+            <div key={book.id} className="bookCard">
+              <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={`${book.coverimage}`} />
+                <Card.Body>
+                  <Card.Title className="bookTitle">{book.title}</Card.Title>
+                  <div className="buttonDiv">
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        navigate(`/${book.id}`);
+                      }}
+                    >
+                      Details
+                    </Button>
+                  </div>
+                </Card.Body>
+              </Card>
+            </div>
+          );
+        })}
+      </section>
     </>
   );
 };

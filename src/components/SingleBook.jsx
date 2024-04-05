@@ -26,7 +26,7 @@ const SingleBook = ({ API_URL_BASE, token }) => {
 
   return (
     <>
-      <Navigations token={token}/>
+      <Navigations token={token} />
       <section className="singleBookPage">
         <h1>{bookDetails.title}</h1>
         <img src={bookDetails.coverimage} className="singleBookImg" />

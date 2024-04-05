@@ -1,18 +1,24 @@
 import Button from "react-bootstrap/Button";
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const LogOut = ({token}) => {
-
-  const clickHandler = () =>{
-    localStorage.removeItem('token');
+const LogOut = () => {
+  const clickHandler = () => {
+    localStorage.removeItem("token");
     window.location.reload();
-  }
+  };
 
-  return(
+  return (
     <>
-      <Button variant='info' onClick={()=>{clickHandler()}}>Log Out</Button>
+      <Button
+        variant="info"
+        onClick={() => {
+          clickHandler();
+        }}
+      >
+        Log Out
+      </Button>
     </>
-  )
-}
+  );
+};
 
-export default LogOut
+export default LogOut;

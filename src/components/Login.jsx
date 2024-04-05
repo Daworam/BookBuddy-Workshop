@@ -4,40 +4,51 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({API_URL_BASE, token, setToken, email, setEmail, password, setPassword}) => {
-
-
+const Login = ({
+  API_URL_BASE,
+  token,
+  setToken,
+  email,
+  setEmail,
+  password,
+  setPassword,
+}) => {
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try{
+    try {
       const response = await fetch(`${API_URL_BASE}/users/login`, {
         method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: `${email}`,
-          password: `${password}`
-        })
-      }); const result = await response.json()
-      if(result.message !== 'Login successful!'){
-        alert('Incorrect Login information, please try again!')    
-      }else{
+          password: `${password}`,
+        }),
+      });
+      const result = await response.json();
+      if (result.message !== "Login successful!") {
+        alert("Incorrect Login information, please try again!");
+      } else {
         localStorage.setItem("token", result.token);
         setToken(result.token);
-        navigate('/')
-      }  
-    }catch(error){
+        navigate("/");
+      }
+    } catch (error) {
       alert(error);
     }
-  }
+  };
 
   return (
     <>
       <h1>Log In</h1>
-      <Form onSubmit={(e)=>{submitHandler(e)}}>
+      <Form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+      >
         <Form.Group className="mb-3" controlId="formEmail">
           <Form.Label>Email:</Form.Label>
           <Form.Control

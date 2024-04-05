@@ -5,12 +5,20 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigations from "./Navigations";
 
-const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, setPassword}) => {
+const Register = ({
+  API_URL_BASE,
+  token,
+  setToken,
+  email,
+  setEmail,
+  password,
+  setPassword,
+}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
   const navigate = useNavigate();
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -23,30 +31,32 @@ const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, set
           firstname: `${firstName}`,
           lastname: `${lastName}`,
           email: `${email}`,
-          password: `${password}`
+          password: `${password}`,
         }),
-      }); 
+      });
       const result = await response.json();
       localStorage.setItem("token", result.token);
       setToken(result.token);
 
-      if(result.name){
-        alert("User already exists, please try another Email Address!")
+      if (result.name) {
+        alert("User already exists, please try another Email Address!");
       }
-      navigate('/')
+      navigate("/");
     } catch (error) {
       alert(error);
     }
   };
-  
+
   return (
     <>
-      <Navigations/>
+      <Navigations />
       <h1>Sign up for the Library App</h1>
-      <Form onSubmit={(e) => {
-            submitHandler(e);
-          }}>
-      <Form.Group className="mb-3" controlId="formFirstName">
+      <Form
+        onSubmit={(e) => {
+          submitHandler(e);
+        }}
+      >
+        <Form.Group className="mb-3" controlId="formFirstName">
           <Form.Label>First Name:</Form.Label>
           <Form.Control
             type="firstName"
@@ -89,10 +99,7 @@ const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, set
             }}
           />
         </Form.Group>
-        <Button
-          variant="dark"
-          type="submit"
-        >
+        <Button variant="dark" type="submit">
           Submit
         </Button>
       </Form>

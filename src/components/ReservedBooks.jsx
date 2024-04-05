@@ -1,7 +1,9 @@
-const ReservedBooks = () => {
-  return (
-    <h1>My Library:</h1>
-  )
-}
+import { useState } from "react";
 
-export default ReservedBooks
+const ReservedBooks = ({ API_URL_BASE, token }) => {
+  const [myBooks, setMyBooks] = useState([]);
+
+  return <h1>My Library:</h1>;
+};
+
+export default ReservedBooks;

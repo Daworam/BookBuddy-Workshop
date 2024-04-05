@@ -16,7 +16,7 @@ const Account = ({ API_URL_BASE, token }) => {
       const response = await fetch(`${API_URL_BASE}/users/me`, {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`,
         },
       });
       const result = await response.json();
@@ -24,7 +24,6 @@ const Account = ({ API_URL_BASE, token }) => {
       setUserLastName(result.lastname);
       setUserEmail(result.email);
       setUserId(result.id);
-      console.log(result);
     } catch (error) {
       alert(error);
     }
@@ -53,6 +52,7 @@ const Account = ({ API_URL_BASE, token }) => {
         <h2>User Id:</h2>
         <p>{userId}</p>
       </section>
+      <h1>My Library:</h1>
       <ReservedBooks API_URL_BASE={API_URL_BASE} token={token} />
     </>
   );

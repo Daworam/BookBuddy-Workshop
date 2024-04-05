@@ -19,22 +19,7 @@ const Navigations = ({ token }) => {
             >
               Home
             </Button>
-            <Button
-              variant="info"
-              onClick={() => {
-                navigate("/register");
-              }}
-            >
-              Sign Up!
-            </Button>
-            <Button
-              variant="info"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              Log In
-            </Button>
+            
             <Button
               variant="info"
               onClick={() => {

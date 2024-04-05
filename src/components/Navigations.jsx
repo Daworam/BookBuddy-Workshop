@@ -1,1 +1,30 @@
-/* TODO - add your code to create a functional React component that renders a navigation bar for the different views in your single page application. You may consider conditionally rendering some options - for example 'Login' should be available if someone has not logged in yet. */
+import LogOut from "./LogOut";
+import Button from "react-bootstrap/Button";
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from "react-router-dom";
+
+const Navigations = ({token}) =>{
+
+ const navigate = useNavigate();
+
+  return (
+    <>
+    <section className='nlButton'>
+      {token ? 
+      <>
+      <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
+      <Button variant='info' onClick={()=>{navigate('/login')}}>Log In</Button>
+      <Button variant='info' onClick={()=>{navigate('/account')}}>My Account</Button>
+      <LogOut token={token}/>
+      </> :
+      <>
+      <Button variant='info' onClick={()=>{navigate('/register')}}>Sign Up!</Button>
+      <Button variant='info' onClick={()=>{navigate('/login')}}>Log In</Button>
+      </>
+      }
+    </section>
+    </>
+  )
+}
+
+export default Navigations

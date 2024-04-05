@@ -4,10 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({API_URL_BASE}) => {
+const Login = ({API_URL_BASE, token, setToken, email, setEmail, password, setPassword}) => {
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   const submitHandler = async (e) => {
@@ -23,11 +22,11 @@ const Login = ({API_URL_BASE}) => {
           password: `${password}`
         })
       }); const result = await response.json()
-      console.log(result)
       if(result.message !== 'Login successful!'){
         alert('Incorrect Login information, please try again!')    
       }else{
-        localStorage.setItem("token", result.token)
+        localStorage.setItem("token", result.token);
+        setToken(result.token);
         navigate('/')
       }  
     }catch(error){

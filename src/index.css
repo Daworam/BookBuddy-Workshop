@@ -24,4 +24,27 @@ body {
   max-height: 500px;
 }
 
+.nlButton {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 3%;
+}
+
+.headline {
+  text-align: center;
+  margin-bottom: 3%;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bookTitle {
+  text-align: center;
+}
+
+.bookCard {
+  margin: 1%;
+}
 /* Add your own custom styles here */

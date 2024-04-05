@@ -4,11 +4,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Register = ({API_URL_BASE}) => {
+const Register = ({API_URL_BASE, token, setToken, email, setEmail, password, setPassword}) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [emailAddress, setEmailAddress] = useState("");
-  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   
   const submitHandler = async (e) => {
@@ -22,14 +21,13 @@ const Register = ({API_URL_BASE}) => {
         body: JSON.stringify({
           firstname: `${firstName}`,
           lastname: `${lastName}`,
-          email: `${emailAddress}`,
+          email: `${email}`,
           password: `${password}`
         }),
       }); 
       const result = await response.json();
-      console.log(result)
-      localStorage.setItem("token", result.token)
-      console.log(localStorage.getItem("token"))
+      localStorage.setItem("token", result.token);
+      setToken(result.token);
 
       if(result.name){
         alert("User already exists, please try another Email Address!")
@@ -74,7 +72,7 @@ const Register = ({API_URL_BASE}) => {
             type="Email"
             placeholder="Enter Email Address"
             onChange={(e) => {
-              setEmailAddress(e.target.value);
+              setEmail(e.target.value);
             }}
           />
         </Form.Group>
